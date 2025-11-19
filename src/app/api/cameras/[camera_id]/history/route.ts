@@ -15,10 +15,10 @@ const images: FridgeImage[] = [];
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { camera_id: string } }
+  { params }: { params: Promise<{ camera_id: string }> }
 ) {
   try {
-    const cameraId = params.camera_id;
+    const { camera_id: cameraId } = await params;
     const apiKey = request.headers.get('X-API-Key');
     const { searchParams } = new URL(request.url);
 
