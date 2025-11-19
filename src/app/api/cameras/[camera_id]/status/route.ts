@@ -19,7 +19,7 @@ export async function GET(
   { params }: { params: Promise<{ camera_id: string }> }
 ) {
   try {
-    const cameraId = params.camera_id;
+    const { camera_id: cameraId } = await params;
     const apiKey = request.headers.get('X-API-Key');
 
     if (!apiKey) {
