@@ -16,7 +16,7 @@ const cameras: Camera[] = [];
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { camera_id: string } }
+  { params }: { params: Promise<{ camera_id: string }> }
 ) {
   try {
     const cameraId = params.camera_id;
